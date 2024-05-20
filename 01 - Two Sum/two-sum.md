@@ -43,25 +43,6 @@
 <p>&nbsp;</p>
 <strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code><font face="monospace">&nbsp;</font>time complexity?
 
-## Solution (C++)
-```C++)
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        
-    }
-};
-```
-
-## Solution (Java)
-```Java)
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        
-    }
-}
-```
-
 ## Solution (Python)
 ```Python)
 class Solution(object):
@@ -71,152 +52,18 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        result = 0
+
+        sums = []
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    result = [i, j]
+                else:
+                    pass
+        if result == 0:
+            return "No combinations of numbers add up to target"
+        else:
+            return result
         
 ```
-
-## Solution (Python3)
-```Python3)
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
-```
-
-## Solution (C)
-```C)
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
-int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
-    
-}
-```
-
-## Solution (C#)
-```C#)
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-        
-    }
-}
-```
-
-## Solution (JavaScript)
-```JavaScript)
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function(nums, target) {
-    
-};
-```
-
-## Solution (TypeScript)
-```TypeScript)
-function twoSum(nums: number[], target: number): number[] {
-    
-};
-```
-
-## Solution (PHP)
-```PHP)
-class Solution {
-
-    /**
-     * @param Integer[] $nums
-     * @param Integer $target
-     * @return Integer[]
-     */
-    function twoSum($nums, $target) {
-        
-    }
-}
-```
-
-## Solution (Swift)
-```Swift)
-class Solution {
-    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        
-    }
-}
-```
-
-## Solution (Kotlin)
-```Kotlin)
-class Solution {
-    fun twoSum(nums: IntArray, target: Int): IntArray {
-        
-    }
-}
-```
-
-## Solution (Dart)
-```Dart)
-class Solution {
-  List<int> twoSum(List<int> nums, int target) {
-    
-  }
-}
-```
-
-## Solution (Go)
-```Go)
-func twoSum(nums []int, target int) []int {
-    
-}
-```
-
-## Solution (Ruby)
-```Ruby)
-# @param {Integer[]} nums
-# @param {Integer} target
-# @return {Integer[]}
-def two_sum(nums, target)
-    
-end
-```
-
-## Solution (Scala)
-```Scala)
-object Solution {
-    def twoSum(nums: Array[Int], target: Int): Array[Int] = {
-        
-    }
-}
-```
-
-## Solution (Rust)
-```Rust)
-impl Solution {
-    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        
-    }
-}
-```
-
-## Solution (Racket)
-```Racket)
-(define/contract (two-sum nums target)
-  (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
-  )
-```
-
-## Solution (Erlang)
-```Erlang)
--spec two_sum(Nums :: [integer()], Target :: integer()) -> [integer()].
-two_sum(Nums, Target) ->
-  .
-```
-
-## Solution (Elixir)
-```Elixir)
-defmodule Solution do
-  @spec two_sum(nums :: [integer], target :: integer) :: [integer]
-  def two_sum(nums, target) do
-    
-  end
-end
-```
-
