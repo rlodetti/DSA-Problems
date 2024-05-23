@@ -1,3 +1,6 @@
+# Ignore all Jupyter notebook files starting with 'hide_'
+hide_*.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

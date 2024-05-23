@@ -43,27 +43,53 @@
 <p>&nbsp;</p>
 <strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code><font face="monospace">&nbsp;</font>time complexity?
 
-## Solution (Python)
-```Python)
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        result = 0
-
-        sums = []
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    result = [i, j]
-                else:
-                    pass
-        if result == 0:
-            return "No combinations of numbers add up to target"
-        else:
-            return result
-        
+## Solution
 ```
+def twoSum(self, nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    result = 0
+
+    sums = []
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                result = [i, j]
+            else:
+                pass
+    if result == 0:
+        return "No combinations of numbers add up to target"
+    else:
+        return result
+```
+
+
+## Optimized Solution
+```
+def two_sum(nums, target):
+    # Create a dictionary to store the difference between the target and each element.
+    num_to_index = {}
+    
+    # Iterate through the list of numbers.
+    for index, num in enumerate(nums):
+
+    # Calculate the difference needed to reach the target.
+    difference = target - num
+    
+    # Check if the difference is already in the dictionary.
+    if difference in num_to_index:
+        # If found, return the indices of the current number and the number that gives the difference.
+        return [num_to_index[difference], index]
+        
+        # If not found, add the current number and its index to the dictionary.
+        num_to_index[num] = index
+
+    return []
+```
+
+## What I Learned
+The optimized solution uses a hash map in the form of a Python dictionary for efficiency. Instead of looping through the list twice, resulting in a time complexity of \(O(n^2)\), this method only requires a single loop, reducing the time complexity to \(O(n)\). What I particularly liked about this solution was the use of the `difference` variable to collect and search for indices. This approach highlights the importance of understanding the relationships between different parts of a problem, reminding me that each binary operation has three interrelated components.
+
