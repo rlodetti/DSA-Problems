@@ -28,173 +28,68 @@
 </ul>
 
 
-## Solution (C++)
-```C++)
-class Solution {
-public:
-    string longestPalindrome(string s) {
-        
-    }
-};
+## My Solution
 ```
-
-## Solution (Java)
-```Java)
-class Solution {
-    public String longestPalindrome(String s) {
-        
-    }
-}
-```
-
-## Solution (Python)
-```Python)
-class Solution(object):
-    def longestPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
-        
-```
-
-## Solution (Python3)
-```Python3)
-class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        
-```
-
-## Solution (C)
-```C)
-char* longestPalindrome(char* s) {
+def find_start(s, pointer):
+    """
+    Finds the starting and ending indices of the first potential palindrome substring.
     
-}
-```
-
-## Solution (C#)
-```C#)
-public class Solution {
-    public string LongestPalindrome(string s) {
+    :param s: The input string.
+    :param pointer: The current position in the string to start searching.
+    :return: A tuple (start, end) if a potential palindrome is found, otherwise None.
+    """
+    substring = s[pointer:]
+    for substring_start in range(len(substring)):
+        # Check for consecutive identical characters
+        if (substring_start + 1 < len(substring)) and (substring[substring_start] == substring[substring_start + 1]):
+            end = substring_start + 1
+            while end + 1 < len(substring) and substring[substring_start] == substring[end + 1]:
+                end += 1
+            return substring_start + pointer, end + pointer
         
-    }
-}
-```
+        # Check for characters with one in between
+        elif (substring_start + 2 < len(substring)) and (substring[substring_start] == substring[substring_start + 2]):
+            return substring_start + pointer, substring_start + 2 + pointer
 
-## Solution (JavaScript)
-```JavaScript)
-/**
- * @param {string} s
- * @return {string}
- */
-var longestPalindrome = function(s) {
+    return None  # Explicitly return None if no palindrome is found
+
+def longestPalindrome(s):
+    """
+    Finds the longest palindromic substring in the input string.
     
-};
-```
-
-## Solution (TypeScript)
-```TypeScript)
-function longestPalindrome(s: string): string {
+    :param s: The input string.
+    :return: The longest palindromic substring.
+    """
     
-};
+    longest_string = s[0]
+    longest_s_len = 1
+    pointer = 0
+
+    while pointer < len(s):
+        # Find the starting and ending indices of the next potential palindrome
+        result = find_start(s, pointer)
+        if result is None:
+            pointer += 1
+            continue
+
+        start, end = result
+        pointer += 1  # Move pointer to the next character for the next iteration
+
+        # Expand around the center to find the longest palindrome
+        while (start - 1 >= 0) and (end + 1 < len(s)) and (s[start - 1] == s[end + 1]):
+            start -= 1
+            end += 1
+
+        # Update the longest palindrome found
+        if (end + 1 - start) > longest_s_len:
+            longest_string = s[start:end + 1]
+            longest_s_len = len(longest_string)
+
+    return longest_string
 ```
 
-## Solution (PHP)
-```PHP)
-class Solution {
-
-    /**
-     * @param String $s
-     * @return String
-     */
-    function longestPalindrome($s) {
-        
-    }
-}
+## Optimal Solution 
+```
 ```
 
-## Solution (Swift)
-```Swift)
-class Solution {
-    func longestPalindrome(_ s: String) -> String {
-        
-    }
-}
-```
-
-## Solution (Kotlin)
-```Kotlin)
-class Solution {
-    fun longestPalindrome(s: String): String {
-        
-    }
-}
-```
-
-## Solution (Dart)
-```Dart)
-class Solution {
-  String longestPalindrome(String s) {
-    
-  }
-}
-```
-
-## Solution (Go)
-```Go)
-func longestPalindrome(s string) string {
-    
-}
-```
-
-## Solution (Ruby)
-```Ruby)
-# @param {String} s
-# @return {String}
-def longest_palindrome(s)
-    
-end
-```
-
-## Solution (Scala)
-```Scala)
-object Solution {
-    def longestPalindrome(s: String): String = {
-        
-    }
-}
-```
-
-## Solution (Rust)
-```Rust)
-impl Solution {
-    pub fn longest_palindrome(s: String) -> String {
-        
-    }
-}
-```
-
-## Solution (Racket)
-```Racket)
-(define/contract (longest-palindrome s)
-  (-> string? string?)
-  )
-```
-
-## Solution (Erlang)
-```Erlang)
--spec longest_palindrome(S :: unicode:unicode_binary()) -> unicode:unicode_binary().
-longest_palindrome(S) ->
-  .
-```
-
-## Solution (Elixir)
-```Elixir)
-defmodule Solution do
-  @spec longest_palindrome(s :: String.t) :: String.t
-  def longest_palindrome(s) do
-    
-  end
-end
-```
-
+## What I Learned
