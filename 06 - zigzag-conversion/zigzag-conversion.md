@@ -54,177 +54,41 @@ P     I
 </ul>
 
 
-## Solution (C++)
-```C++)
-class Solution {
-public:
-    string convert(string s, int numRows) {
-        
-    }
-};
+## My Solution
 ```
-
-## Solution (Java)
-```Java)
-class Solution {
-    public String convert(String s, int numRows) {
-        
-    }
-}
-```
-
-## Solution (Python)
-```Python)
-class Solution(object):
-    def convert(self, s, numRows):
-        """
-        :type s: str
-        :type numRows: int
-        :rtype: str
-        """
-        
-```
-
-## Solution (Python3)
-```Python3)
-class Solution:
-    def convert(self, s: str, numRows: int) -> str:
-        
-```
-
-## Solution (C)
-```C)
-char* convert(char* s, int numRows) {
+def convert(s, numRows):
+    """
+    :type s: str
+    :type numRows: int
+    :rtype: str
+    """
+    # If there is only one row, just return the original string
+    if numRows == 1 or numRows >= len(s):
+        return s
     
-}
-```
-
-## Solution (C#)
-```C#)
-public class Solution {
-    public string Convert(string s, int numRows) {
-        
-    }
-}
-```
-
-## Solution (JavaScript)
-```JavaScript)
-/**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
- */
-var convert = function(s, numRows) {
+    # Steps between elements in top row
+    cycle_len = 2 * numRows - 2
     
-};
-```
-
-## Solution (TypeScript)
-```TypeScript)
-function convert(s: string, numRows: number): string {
+    # Create a list of strings for each row
+    rows = [''] * numRows
     
-};
-```
+    for i, char in enumerate(s):
+        mod_idx = i % cycle_len
 
-## Solution (PHP)
-```PHP)
-class Solution {
-
-    /**
-     * @param String $s
-     * @param Integer $numRows
-     * @return String
-     */
-    function convert($s, $numRows) {
+        # Building the vertical row
+        if mod_idx < numRows:
+            rows[mod_idx] += char
         
-    }
-}
-```
-
-## Solution (Swift)
-```Swift)
-class Solution {
-    func convert(_ s: String, _ numRows: Int) -> String {
-        
-    }
-}
-```
-
-## Solution (Kotlin)
-```Kotlin)
-class Solution {
-    fun convert(s: String, numRows: Int): String {
-        
-    }
-}
-```
-
-## Solution (Dart)
-```Dart)
-class Solution {
-  String convert(String s, int numRows) {
+        # Building the zig back up
+        else:
+            rows[cycle_len - mod_idx] += char
     
-  }
-}
+    # Concatenate all rows to get the final result
+    return ''.join(rows)
 ```
 
-## Solution (Go)
-```Go)
-func convert(s string, numRows int) string {
-    
-}
+## Optimized Solution
+```
 ```
 
-## Solution (Ruby)
-```Ruby)
-# @param {String} s
-# @param {Integer} num_rows
-# @return {String}
-def convert(s, num_rows)
-    
-end
-```
-
-## Solution (Scala)
-```Scala)
-object Solution {
-    def convert(s: String, numRows: Int): String = {
-        
-    }
-}
-```
-
-## Solution (Rust)
-```Rust)
-impl Solution {
-    pub fn convert(s: String, num_rows: i32) -> String {
-        
-    }
-}
-```
-
-## Solution (Racket)
-```Racket)
-(define/contract (convert s numRows)
-  (-> string? exact-integer? string?)
-  )
-```
-
-## Solution (Erlang)
-```Erlang)
--spec convert(S :: unicode:unicode_binary(), NumRows :: integer()) -> unicode:unicode_binary().
-convert(S, NumRows) ->
-  .
-```
-
-## Solution (Elixir)
-```Elixir)
-defmodule Solution do
-  @spec convert(s :: String.t, num_rows :: integer) :: String.t
-  def convert(s, num_rows) do
-    
-  end
-end
-```
-
+## What I Learned
